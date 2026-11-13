@@ -1,0 +1,409 @@
+{
+  "common": {
+    "siteName": "TVDE Hub Portugal",
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "theme": "Change theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "language": "Language",
+    "languageName": {
+      "pt": "Português",
+      "en": "English"
+    },
+    "verified": "Verified",
+    "reviews": "{count, plural, one {# review} other {# reviews}}",
+    "ratingLabel": "Rated {rating} out of 5"
+  },
+  "nav": {
+    "drivers": "Drivers",
+    "fleets": "Fleets",
+    "request": "Request a driver",
+    "about": "About",
+    "login": "Log in",
+    "register": "Sign up",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "metadata": {
+    "title": "TVDE Hub Portugal — Drivers, fleets and customers",
+    "description": "The marketplace connecting TVDE drivers, fleet operators and customers across Portugal."
+  },
+  "hero": {
+    "badge": "Made for Portugal's TVDE sector",
+    "title": "The trusted meeting point for drivers, fleets and customers",
+    "subtitle": "Find verified TVDE drivers and fleets, grow your operation, or request a ride for your guests. Simple, transparent and in your language."
+  },
+  "entry": {
+    "driver": {
+      "title": "I'm a driver",
+      "description": "Publish your profile, find a fleet and receive invitations.",
+      "cta": "Create driver profile"
+    },
+    "fleet": {
+      "title": "I'm a fleet owner",
+      "description": "Showcase your fleet, find drivers and receive customer requests.",
+      "cta": "Create fleet profile"
+    },
+    "customer": {
+      "title": "I need a driver",
+      "description": "Browse verified drivers and fleets, or post one request. No account needed.",
+      "cta": "Request a driver"
+    }
+  },
+  "how": {
+    "title": "How it works",
+    "subtitle": "Three simple steps, whoever you are.",
+    "driver": {
+      "title": "Drivers",
+      "step1": "Create your profile and upload your documents.",
+      "step2": "Get verified and appear in search.",
+      "step3": "Apply to fleets or accept invitations."
+    },
+    "fleet": {
+      "title": "Fleet owners",
+      "step1": "Publish your fleet and operator licence.",
+      "step2": "Invite drivers or review applications.",
+      "step3": "Answer customer requests and assign drivers."
+    },
+    "customer": {
+      "title": "Customers",
+      "step1": "Browse profiles or fill in one request.",
+      "step2": "Receive replies and quotes by email.",
+      "step3": "Follow your booking and leave a review."
+    }
+  },
+  "footer": {
+    "tagline": "A directory and connection service for TVDE in Portugal.",
+    "platform": "Platform",
+    "company": "Company",
+    "legal": "Legal",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "cookies": "Cookie policy",
+    "rights": "© {year} TVDE Hub Portugal. All rights reserved."
+  },
+  "legal": {
+    "noticeTitle": "Legal notice",
+    "notice": "TVDE Hub Portugal is a directory and connection service. It is not a transport operator. All users must comply with Portuguese TVDE regulations (Lei n.º 45/2018 and applicable IMT rules)."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has moved.",
+    "cta": "Back to home"
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Log in to manage your profile, documents and requests.",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Free for drivers and fleet owners. It takes about a minute.",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full name or company name",
+    "nameHint": "This becomes your public name. You can change it later.",
+    "passwordHint": "At least 10 characters, with letters and numbers.",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "loginSubmit": "Log in",
+    "signingIn": "Logging in…",
+    "registerSubmit": "Create account",
+    "creatingAccount": "Creating your account…",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create one",
+    "haveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "continueWithGoogle": "Continue with Google",
+    "signUpWithGoogle": "Sign up with Google",
+    "googleOnboardingNote": "With Google you'll choose driver or fleet owner in the next step.",
+    "or": "or",
+    "iAm": "I am a…",
+    "roleDriverTitle": "Driver",
+    "roleDriverDescription": "I drive TVDE and want to find fleets and work.",
+    "roleFleetTitle": "Fleet owner",
+    "roleFleetDescription": "I operate vehicles and want drivers and customers.",
+    "consent": "I accept the <terms>Terms of use</terms> and the <privacy>Privacy policy</privacy>.",
+    "onboardingTitle": "One last step",
+    "onboardingSubtitle": "Tell us how you will use TVDE Hub so we can set up your profile.",
+    "onboardingSubmit": "Continue"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "invalid": "This value is not valid.",
+    "invalidEmail": "Enter a valid email address.",
+    "tooLong": "This is too long.",
+    "nameMin": "Enter at least 2 characters.",
+    "passwordMin": "Use at least 10 characters.",
+    "passwordMax": "Use at most 128 characters.",
+    "passwordLetter": "Include at least one letter.",
+    "passwordNumber": "Include at least one number.",
+    "consentRequired": "You must accept to continue.",
+    "invalidNumber": "Enter a valid number.",
+    "invalidYear": "Enter a valid year.",
+    "invalidPhone": "Enter a valid phone number, e.g. +351 912 345 678.",
+    "invalidUrl": "Enter a full web address starting with https://",
+    "invalidNif": "This NIF is not valid.",
+    "invalidDate": "Enter a valid date.",
+    "expiryPast": "The expiry date must be in the future."
+  },
+  "errors": {
+    "unknown": "Something went wrong. Please try again.",
+    "validation": "Please check the highlighted fields.",
+    "unauthorized": "Your session has expired. Please log in again.",
+    "forbidden": "You don't have permission to do that.",
+    "rateLimited": "Too many attempts. Please wait a few minutes and try again.",
+    "emailTaken": "An account with this email already exists.",
+    "invalidCredentials": "Incorrect email or password.",
+    "loginAfterRegister": "Your account was created. Please log in.",
+    "alreadyOnboarded": "Your profile is already set up.",
+    "invalidReference": "One of the selected options is no longer available. Reload the page and try again.",
+    "notPublishable": "Complete the required fields before publishing your profile.",
+    "vehicleLimit": "You have reached the maximum number of vehicles.",
+    "notFound": "We could not find that item.",
+    "invalidUpload": "The upload could not be read. Try another file.",
+    "fileTooLarge": "This file is too large. The maximum size is 4 MB.",
+    "unsupportedImage": "Use a JPG, PNG or WebP image.",
+    "unsupportedDocument": "Use a PDF, JPG or PNG file.",
+    "uploadFailed": "The upload failed. Please try again.",
+    "documentExists": "You already have a pending or approved document of this type. Delete it first to upload a new one.",
+    "oauthNotLinked": "This email is already registered with a password. Log in with your email and password instead.",
+    "oauthError": "We could not sign you in with Google. Please try again.",
+    "serviceUnavailable": "We can't reach the database right now. Check your connection and try again in a moment."
+  },
+  "enums": {
+    "serviceType": {
+      "TVDE_RIDES": "TVDE rides",
+      "TOURS_AND_TRANSFERS": "Tours and transfers",
+      "AIRPORT_TRANSFERS": "Airport transfers",
+      "CORPORATE_EVENTS": "Corporate and events"
+    },
+    "vehicleType": {
+      "STANDARD": "Standard",
+      "VAN_MPV": "Van / MPV",
+      "ELECTRIC": "Electric",
+      "PREMIUM": "Premium"
+    },
+    "availability": {
+      "AVAILABLE": "Available",
+      "BUSY": "Busy",
+      "OFFLINE": "Offline"
+    }
+  },
+  "dashboard": {
+    "roleDriver": "Driver account",
+    "roleFleet": "Fleet account",
+    "nav": {
+      "label": "Dashboard",
+      "overview": "Overview",
+      "profile": "Profile",
+      "vehicles": "Vehicles",
+      "documents": "Documents"
+    },
+    "overview": {
+      "welcome": "Hello, {name}",
+      "notVerified": "Not verified yet",
+      "subtitleDriver": "Complete your profile and documents to get verified and found by fleets and customers.",
+      "subtitleFleet": "Complete your company profile and documents to get verified and found by drivers and customers.",
+      "completenessTitle": "Profile completeness",
+      "completenessDescription": "A complete profile gets noticed more often.",
+      "editProfile": "Edit profile",
+      "allDone": "Your profile is complete. Great work!",
+      "verificationTitle": "Verification",
+      "verificationDescription": "The Verified badge appears after our team approves all of these documents.",
+      "manageDocuments": "Manage documents"
+    },
+    "visibility": {
+      "title": "Public visibility",
+      "descriptionDriver": "Choose whether customers and fleets can find your profile.",
+      "descriptionFleet": "Choose whether customers and drivers can find your fleet.",
+      "nowPublic": "Your profile is now public.",
+      "nowHidden": "Your profile is now hidden.",
+      "availabilityUpdated": "Availability updated.",
+      "public": "Public",
+      "hidden": "Hidden",
+      "publicHint": "Your profile appears in search results.",
+      "hiddenHint": "Only you can see your profile.",
+      "needsBeforePublishing": "Before you can publish, add:",
+      "availability": "Availability"
+    }
+  },
+  "completeness": {
+    "items": {
+      "photo": "Add a profile photo",
+      "logo": "Add your logo",
+      "bio": "Write a short bio (at least 40 characters)",
+      "description": "Describe your company (at least 40 characters)",
+      "phone": "Add a phone number",
+      "contactEmail": "Add a contact email",
+      "city": "Choose your city",
+      "languages": "Select the languages you speak",
+      "serviceTypes": "Select your service types",
+      "serviceAreas": "Select the regions you cover",
+      "vehicle": "Add a vehicle",
+      "docTvdeCertificate": "Upload your TVDE driver certificate",
+      "docDrivingLicence": "Upload your driving licence",
+      "docCriminalRecord": "Upload your criminal record certificate",
+      "docOperatorLicence": "Upload your TVDE operator licence",
+      "docNif": "Upload your NIF document",
+      "docInsurance": "Upload your insurance"
+    },
+    "blockers": {
+      "name": "A name",
+      "city": "Your city",
+      "languages": "At least one language",
+      "serviceTypes": "At least one service type"
+    }
+  },
+  "profile": {
+    "driverTitle": "Your driver profile",
+    "driverSubtitle": "This is what customers and fleets see. Your email and phone are never shown publicly.",
+    "fleetTitle": "Your fleet profile",
+    "fleetSubtitle": "This is what customers and drivers see. Contact details stay private until you reply or accept.",
+    "saved": "Profile saved.",
+    "unsaved": "You have unsaved changes.",
+    "allSaved": "All changes saved.",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "phone": "Phone",
+    "phoneHint": "Private. Shared only after a connection is accepted.",
+    "city": "City",
+    "selectCity": "Select a city",
+    "serviceTypes": "Services",
+    "serviceTypesHint": "Select everything you offer.",
+    "languages": "Languages you speak",
+    "languagesHint": "Customers filter by language, so add them all.",
+    "serviceAreas": "Regions you cover",
+    "serviceAreasHint": "Select every district or island where you work.",
+    "sections": {
+      "about": "About you",
+      "aboutDescription": "Photo, name and a short introduction.",
+      "work": "Your work",
+      "workDescription": "Experience, services and languages.",
+      "location": "Location",
+      "locationDescription": "Where you are based and where you can work.",
+      "company": "Company",
+      "companyDescription": "Logo, name and description of your fleet.",
+      "private": "Private details",
+      "privateDescription": "Never shown publicly. Used for verification and shared only after a connection is accepted.",
+      "offer": "What you offer",
+      "offerDescription": "Services, languages and terms for drivers."
+    },
+    "driver": {
+      "displayName": "Public name",
+      "bio": "Bio",
+      "bioHint": "Introduce yourself in a few sentences: experience, vehicle, what customers can expect.",
+      "yearsExperience": "Years of experience",
+      "availability": "Availability"
+    },
+    "fleet": {
+      "companyName": "Company name",
+      "description": "Description",
+      "descriptionHint": "What makes your fleet different? Vehicles, coverage, reliability.",
+      "website": "Website",
+      "contactEmail": "Contact email",
+      "nif": "NIF",
+      "nifHint": "9 digits. Private.",
+      "operatorLicenceNumber": "TVDE operator licence number",
+      "languages": "Languages your drivers speak",
+      "languagesHint": "Customers filter by language, so add them all.",
+      "termsOffered": "Terms offered to drivers",
+      "termsOfferedHint": "For example commission, weekly rent, bonuses or vehicle conditions.",
+      "showDriversPublicly": "Show my drivers publicly",
+      "showDriversPubliclyHint": "You can choose per driver once connections are available."
+    },
+    "photo": {
+      "photo": "Profile photo",
+      "logo": "Logo",
+      "uploaded": "Image uploaded.",
+      "removed": "Image removed.",
+      "uploading": "Uploading…",
+      "upload": "Upload image",
+      "change": "Change image",
+      "remove": "Remove",
+      "hint": "JPG, PNG or WebP, up to 4 MB."
+    }
+  },
+  "vehicles": {
+    "titleDriver": "Your vehicle",
+    "titleFleet": "Your vehicles",
+    "subtitleDriver": "Add the car you drive. Customers see make, model, year and type.",
+    "subtitleFleet": "Add the vehicles in your fleet. Customers see make, model, year and type.",
+    "listTitle": "Vehicles",
+    "count": "{count} of {max} vehicles",
+    "emptyTitle": "No vehicles yet",
+    "emptyDescription": "Add your first vehicle below to complete your profile.",
+    "seatsCount": "{count, plural, one {# seat} other {# seats}}",
+    "plate": "Licence plate",
+    "plateHint": "Private. Never shown publicly.",
+    "confirmRemove": "Remove this vehicle?",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "added": "Vehicle added.",
+    "removed": "Vehicle removed.",
+    "addTitle": "Add a vehicle",
+    "addDescription": "Only the make, model, year and type are public.",
+    "limitReached": "You have reached the maximum of {max} vehicles.",
+    "make": "Make",
+    "model": "Model",
+    "year": "Year",
+    "seats": "Passenger seats",
+    "type": "Vehicle type",
+    "add": "Add vehicle",
+    "adding": "Adding…"
+  },
+  "documents": {
+    "title": "Documents",
+    "subtitleDriver": "Upload your documents so our team can verify you.",
+    "subtitleFleet": "Upload your company documents so our team can verify you.",
+    "privacyTitle": "Your documents are private",
+    "privacyBody": "Only you and our verification team can open them. They are never shown on your public profile, and every admin view is logged.",
+    "listTitle": "Uploaded documents",
+    "listDescription": "Status updates appear here and you will be notified by email.",
+    "emptyTitle": "No documents yet",
+    "emptyDescription": "Upload your documents below to start verification.",
+    "number": "Document number",
+    "expires": "Expiry date",
+    "expiresOptional": "Optional.",
+    "rejectedReason": "Reason for rejection",
+    "view": "View",
+    "delete": "Delete",
+    "confirmDelete": "Delete this document?",
+    "confirmDeleteApproved": "This document is approved. Deleting it removes your Verified badge. Continue?",
+    "cancel": "Cancel",
+    "deleted": "Document deleted.",
+    "uploadTitle": "Upload a document",
+    "uploadDescription": "PDF, JPG or PNG, up to {size} MB.",
+    "allUploaded": "You have uploaded every required document.",
+    "type": "Document type",
+    "file": "File",
+    "fileHint": "PDF, JPG or PNG.",
+    "upload": "Upload document",
+    "uploading": "Uploading…",
+    "uploaded": "Document uploaded. We will review it soon.",
+    "types": {
+      "TVDE_DRIVER_CERTIFICATE": "TVDE driver certificate",
+      "DRIVING_LICENCE": "Driving licence",
+      "CRIMINAL_RECORD": "Criminal record certificate",
+      "TVDE_OPERATOR_LICENCE": "TVDE operator licence",
+      "NIF": "NIF (tax number)",
+      "INSURANCE": "Insurance"
+    },
+    "status": {
+      "PENDING": "Under review",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "EXPIRED": "Expired",
+      "MISSING": "Not uploaded"
+    }
+  },
+  "admin": {
+    "title": "Admin panel",
+    "welcome": "Signed in as {email}.",
+    "comingSoon": "Verification queue, user management and review moderation arrive in milestone 5."
+  }
+}

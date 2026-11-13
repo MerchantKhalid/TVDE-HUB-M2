@@ -1,0 +1,409 @@
+{
+  "common": {
+    "siteName": "TVDE Hub Portugal",
+    "skipToContent": "Saltar para o conteúdo",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "mainNavigation": "Navegação principal",
+    "theme": "Alterar tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeSystem": "Sistema",
+    "language": "Idioma",
+    "languageName": {
+      "pt": "Português",
+      "en": "English"
+    },
+    "verified": "Verificado",
+    "reviews": "{count, plural, one {# avaliação} other {# avaliações}}",
+    "ratingLabel": "Avaliação de {rating} em 5"
+  },
+  "nav": {
+    "drivers": "Motoristas",
+    "fleets": "Frotas",
+    "request": "Pedir um motorista",
+    "about": "Sobre nós",
+    "login": "Iniciar sessão",
+    "register": "Criar conta",
+    "dashboard": "Painel",
+    "logout": "Terminar sessão"
+  },
+  "metadata": {
+    "title": "TVDE Hub Portugal — Motoristas, frotas e clientes",
+    "description": "O marketplace que liga motoristas TVDE, operadores de frota e clientes em todo o país."
+  },
+  "hero": {
+    "badge": "Feito para o setor TVDE em Portugal",
+    "title": "O ponto de encontro de confiança entre motoristas, frotas e clientes",
+    "subtitle": "Encontre motoristas e frotas TVDE verificados, faça crescer a sua operação ou peça uma viagem para os seus convidados. Simples, transparente e na sua língua."
+  },
+  "entry": {
+    "driver": {
+      "title": "Sou motorista",
+      "description": "Publique o seu perfil, encontre uma frota e receba convites.",
+      "cta": "Criar perfil de motorista"
+    },
+    "fleet": {
+      "title": "Sou dono de frota",
+      "description": "Apresente a sua frota, encontre motoristas e receba pedidos de clientes.",
+      "cta": "Criar perfil de frota"
+    },
+    "customer": {
+      "title": "Preciso de um motorista",
+      "description": "Explore motoristas e frotas verificados ou faça um único pedido. Sem conta.",
+      "cta": "Pedir um motorista"
+    }
+  },
+  "how": {
+    "title": "Como funciona",
+    "subtitle": "Três passos simples, seja quem for.",
+    "driver": {
+      "title": "Motoristas",
+      "step1": "Crie o seu perfil e carregue os documentos.",
+      "step2": "Seja verificado e apareça nas pesquisas.",
+      "step3": "Candidate-se a frotas ou aceite convites."
+    },
+    "fleet": {
+      "title": "Donos de frota",
+      "step1": "Publique a sua frota e a licença de operador.",
+      "step2": "Convide motoristas ou analise candidaturas.",
+      "step3": "Responda a pedidos de clientes e atribua motoristas."
+    },
+    "customer": {
+      "title": "Clientes",
+      "step1": "Explore perfis ou preencha um único pedido.",
+      "step2": "Receba respostas e orçamentos por email.",
+      "step3": "Acompanhe a sua reserva e deixe uma avaliação."
+    }
+  },
+  "footer": {
+    "tagline": "Um serviço de diretório e ligação para o TVDE em Portugal.",
+    "platform": "Plataforma",
+    "company": "Empresa",
+    "legal": "Legal",
+    "about": "Sobre nós",
+    "faq": "Perguntas frequentes",
+    "contact": "Contacto",
+    "privacy": "Política de privacidade",
+    "terms": "Termos de utilização",
+    "cookies": "Política de cookies",
+    "rights": "© {year} TVDE Hub Portugal. Todos os direitos reservados."
+  },
+  "legal": {
+    "noticeTitle": "Aviso legal",
+    "notice": "O TVDE Hub Portugal é um serviço de diretório e ligação. Não é um operador de transporte. Todos os utilizadores devem cumprir a legislação TVDE portuguesa (Lei n.º 45/2018 e regras aplicáveis do IMT)."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que procura não existe ou foi movida.",
+    "cta": "Voltar ao início"
+  },
+  "auth": {
+    "loginTitle": "Bem-vindo de volta",
+    "loginSubtitle": "Inicie sessão para gerir o seu perfil, documentos e pedidos.",
+    "registerTitle": "Crie a sua conta",
+    "registerSubtitle": "Gratuito para motoristas e donos de frota. Demora cerca de um minuto.",
+    "email": "Email",
+    "password": "Palavra-passe",
+    "name": "Nome completo ou nome da empresa",
+    "nameHint": "Este será o seu nome público. Pode alterá-lo mais tarde.",
+    "passwordHint": "Pelo menos 10 caracteres, com letras e números.",
+    "showPassword": "Mostrar palavra-passe",
+    "hidePassword": "Ocultar palavra-passe",
+    "loginSubmit": "Iniciar sessão",
+    "signingIn": "A iniciar sessão…",
+    "registerSubmit": "Criar conta",
+    "creatingAccount": "A criar a sua conta…",
+    "noAccount": "Ainda não tem conta?",
+    "createAccount": "Crie uma",
+    "haveAccount": "Já tem conta?",
+    "loginLink": "Iniciar sessão",
+    "continueWithGoogle": "Continuar com o Google",
+    "signUpWithGoogle": "Registar com o Google",
+    "googleOnboardingNote": "Com o Google, escolhe motorista ou dono de frota no passo seguinte.",
+    "or": "ou",
+    "iAm": "Sou…",
+    "roleDriverTitle": "Motorista",
+    "roleDriverDescription": "Conduzo TVDE e quero encontrar frotas e trabalho.",
+    "roleFleetTitle": "Dono de frota",
+    "roleFleetDescription": "Giro viaturas e quero motoristas e clientes.",
+    "consent": "Aceito os <terms>Termos de utilização</terms> e a <privacy>Política de privacidade</privacy>.",
+    "onboardingTitle": "Só falta um passo",
+    "onboardingSubtitle": "Diga-nos como vai usar o TVDE Hub para prepararmos o seu perfil.",
+    "onboardingSubmit": "Continuar"
+  },
+  "validation": {
+    "required": "Este campo é obrigatório.",
+    "invalid": "Este valor não é válido.",
+    "invalidEmail": "Introduza um endereço de email válido.",
+    "tooLong": "O texto é demasiado longo.",
+    "nameMin": "Introduza pelo menos 2 caracteres.",
+    "passwordMin": "Use pelo menos 10 caracteres.",
+    "passwordMax": "Use no máximo 128 caracteres.",
+    "passwordLetter": "Inclua pelo menos uma letra.",
+    "passwordNumber": "Inclua pelo menos um número.",
+    "consentRequired": "Tem de aceitar para continuar.",
+    "invalidNumber": "Introduza um número válido.",
+    "invalidYear": "Introduza um ano válido.",
+    "invalidPhone": "Introduza um número de telefone válido, p. ex. +351 912 345 678.",
+    "invalidUrl": "Introduza um endereço completo, começado por https://",
+    "invalidNif": "Este NIF não é válido.",
+    "invalidDate": "Introduza uma data válida.",
+    "expiryPast": "A data de validade tem de ser futura."
+  },
+  "errors": {
+    "unknown": "Algo correu mal. Tente novamente.",
+    "validation": "Verifique os campos assinalados.",
+    "unauthorized": "A sua sessão expirou. Inicie sessão novamente.",
+    "forbidden": "Não tem permissão para fazer isto.",
+    "rateLimited": "Demasiadas tentativas. Aguarde alguns minutos e tente novamente.",
+    "emailTaken": "Já existe uma conta com este email.",
+    "invalidCredentials": "Email ou palavra-passe incorretos.",
+    "loginAfterRegister": "A sua conta foi criada. Inicie sessão.",
+    "alreadyOnboarded": "O seu perfil já está configurado.",
+    "invalidReference": "Uma das opções selecionadas já não está disponível. Recarregue a página e tente novamente.",
+    "notPublishable": "Preencha os campos obrigatórios antes de publicar o seu perfil.",
+    "vehicleLimit": "Atingiu o número máximo de viaturas.",
+    "notFound": "Não foi possível encontrar este item.",
+    "invalidUpload": "Não foi possível ler o carregamento. Experimente outro ficheiro.",
+    "fileTooLarge": "Este ficheiro é demasiado grande. O tamanho máximo é 4 MB.",
+    "unsupportedImage": "Use uma imagem JPG, PNG ou WebP.",
+    "unsupportedDocument": "Use um ficheiro PDF, JPG ou PNG.",
+    "uploadFailed": "O carregamento falhou. Tente novamente.",
+    "documentExists": "Já tem um documento deste tipo pendente ou aprovado. Elimine-o primeiro para carregar um novo.",
+    "oauthNotLinked": "Este email já está registado com palavra-passe. Inicie sessão com o email e a palavra-passe.",
+    "oauthError": "Não foi possível iniciar sessão com o Google. Tente novamente.",
+    "serviceUnavailable": "Não conseguimos aceder à base de dados neste momento. Verifique a ligação e tente novamente dentro de instantes."
+  },
+  "enums": {
+    "serviceType": {
+      "TVDE_RIDES": "Viagens TVDE",
+      "TOURS_AND_TRANSFERS": "Passeios e transferes",
+      "AIRPORT_TRANSFERS": "Transferes de aeroporto",
+      "CORPORATE_EVENTS": "Empresas e eventos"
+    },
+    "vehicleType": {
+      "STANDARD": "Standard",
+      "VAN_MPV": "Carrinha / MPV",
+      "ELECTRIC": "Elétrico",
+      "PREMIUM": "Premium"
+    },
+    "availability": {
+      "AVAILABLE": "Disponível",
+      "BUSY": "Ocupado",
+      "OFFLINE": "Offline"
+    }
+  },
+  "dashboard": {
+    "roleDriver": "Conta de motorista",
+    "roleFleet": "Conta de frota",
+    "nav": {
+      "label": "Painel",
+      "overview": "Resumo",
+      "profile": "Perfil",
+      "vehicles": "Viaturas",
+      "documents": "Documentos"
+    },
+    "overview": {
+      "welcome": "Olá, {name}",
+      "notVerified": "Ainda não verificado",
+      "subtitleDriver": "Complete o seu perfil e documentos para ser verificado e encontrado por frotas e clientes.",
+      "subtitleFleet": "Complete o perfil da empresa e os documentos para ser verificado e encontrado por motoristas e clientes.",
+      "completenessTitle": "Perfil completo",
+      "completenessDescription": "Um perfil completo é visto com mais frequência.",
+      "editProfile": "Editar perfil",
+      "allDone": "O seu perfil está completo. Excelente trabalho!",
+      "verificationTitle": "Verificação",
+      "verificationDescription": "O selo Verificado aparece depois de a nossa equipa aprovar todos estes documentos.",
+      "manageDocuments": "Gerir documentos"
+    },
+    "visibility": {
+      "title": "Visibilidade pública",
+      "descriptionDriver": "Escolha se clientes e frotas podem encontrar o seu perfil.",
+      "descriptionFleet": "Escolha se clientes e motoristas podem encontrar a sua frota.",
+      "nowPublic": "O seu perfil está agora público.",
+      "nowHidden": "O seu perfil está agora oculto.",
+      "availabilityUpdated": "Disponibilidade atualizada.",
+      "public": "Público",
+      "hidden": "Oculto",
+      "publicHint": "O seu perfil aparece nos resultados de pesquisa.",
+      "hiddenHint": "Só você pode ver o seu perfil.",
+      "needsBeforePublishing": "Antes de publicar, adicione:",
+      "availability": "Disponibilidade"
+    }
+  },
+  "completeness": {
+    "items": {
+      "photo": "Adicione uma fotografia de perfil",
+      "logo": "Adicione o seu logótipo",
+      "bio": "Escreva uma breve apresentação (mínimo 40 caracteres)",
+      "description": "Descreva a sua empresa (mínimo 40 caracteres)",
+      "phone": "Adicione um número de telefone",
+      "contactEmail": "Adicione um email de contacto",
+      "city": "Escolha a sua cidade",
+      "languages": "Selecione os idiomas que fala",
+      "serviceTypes": "Selecione os seus tipos de serviço",
+      "serviceAreas": "Selecione as regiões que cobre",
+      "vehicle": "Adicione uma viatura",
+      "docTvdeCertificate": "Carregue o seu certificado de motorista TVDE",
+      "docDrivingLicence": "Carregue a sua carta de condução",
+      "docCriminalRecord": "Carregue o seu certificado de registo criminal",
+      "docOperatorLicence": "Carregue a sua licença de operador TVDE",
+      "docNif": "Carregue o documento do seu NIF",
+      "docInsurance": "Carregue o seu seguro"
+    },
+    "blockers": {
+      "name": "Um nome",
+      "city": "A sua cidade",
+      "languages": "Pelo menos um idioma",
+      "serviceTypes": "Pelo menos um tipo de serviço"
+    }
+  },
+  "profile": {
+    "driverTitle": "O seu perfil de motorista",
+    "driverSubtitle": "É isto que os clientes e as frotas veem. O seu email e telemóvel nunca são mostrados publicamente.",
+    "fleetTitle": "O perfil da sua frota",
+    "fleetSubtitle": "É isto que os clientes e os motoristas veem. Os contactos ficam privados até responder ou aceitar.",
+    "saved": "Perfil guardado.",
+    "unsaved": "Tem alterações por guardar.",
+    "allSaved": "Todas as alterações guardadas.",
+    "save": "Guardar alterações",
+    "saving": "A guardar…",
+    "phone": "Telemóvel",
+    "phoneHint": "Privado. Só é partilhado depois de uma ligação ser aceite.",
+    "city": "Cidade",
+    "selectCity": "Selecione uma cidade",
+    "serviceTypes": "Serviços",
+    "serviceTypesHint": "Selecione tudo o que oferece.",
+    "languages": "Idiomas que fala",
+    "languagesHint": "Os clientes filtram por idioma, por isso adicione todos.",
+    "serviceAreas": "Regiões que cobre",
+    "serviceAreasHint": "Selecione todos os distritos ou ilhas onde trabalha.",
+    "sections": {
+      "about": "Sobre si",
+      "aboutDescription": "Fotografia, nome e uma breve apresentação.",
+      "work": "O seu trabalho",
+      "workDescription": "Experiência, serviços e idiomas.",
+      "location": "Localização",
+      "locationDescription": "Onde está sediado e onde pode trabalhar.",
+      "company": "Empresa",
+      "companyDescription": "Logótipo, nome e descrição da sua frota.",
+      "private": "Dados privados",
+      "privateDescription": "Nunca são mostrados publicamente. Servem para verificação e só são partilhados depois de uma ligação ser aceite.",
+      "offer": "O que oferece",
+      "offerDescription": "Serviços, idiomas e condições para motoristas."
+    },
+    "driver": {
+      "displayName": "Nome público",
+      "bio": "Apresentação",
+      "bioHint": "Apresente-se em poucas frases: experiência, viatura, o que os clientes podem esperar.",
+      "yearsExperience": "Anos de experiência",
+      "availability": "Disponibilidade"
+    },
+    "fleet": {
+      "companyName": "Nome da empresa",
+      "description": "Descrição",
+      "descriptionHint": "O que distingue a sua frota? Viaturas, cobertura, fiabilidade.",
+      "website": "Website",
+      "contactEmail": "Email de contacto",
+      "nif": "NIF",
+      "nifHint": "9 dígitos. Privado.",
+      "operatorLicenceNumber": "Número da licença de operador TVDE",
+      "languages": "Idiomas falados pelos seus motoristas",
+      "languagesHint": "Os clientes filtram por idioma, por isso adicione todos.",
+      "termsOffered": "Condições oferecidas aos motoristas",
+      "termsOfferedHint": "Por exemplo comissão, renda semanal, bónus ou condições da viatura.",
+      "showDriversPublicly": "Mostrar os meus motoristas publicamente",
+      "showDriversPubliclyHint": "Poderá escolher por motorista quando as ligações estiverem disponíveis."
+    },
+    "photo": {
+      "photo": "Fotografia de perfil",
+      "logo": "Logótipo",
+      "uploaded": "Imagem carregada.",
+      "removed": "Imagem removida.",
+      "uploading": "A carregar…",
+      "upload": "Carregar imagem",
+      "change": "Alterar imagem",
+      "remove": "Remover",
+      "hint": "JPG, PNG ou WebP, até 4 MB."
+    }
+  },
+  "vehicles": {
+    "titleDriver": "A sua viatura",
+    "titleFleet": "As suas viaturas",
+    "subtitleDriver": "Adicione o carro que conduz. Os clientes veem marca, modelo, ano e tipo.",
+    "subtitleFleet": "Adicione as viaturas da sua frota. Os clientes veem marca, modelo, ano e tipo.",
+    "listTitle": "Viaturas",
+    "count": "{count} de {max} viaturas",
+    "emptyTitle": "Ainda sem viaturas",
+    "emptyDescription": "Adicione a sua primeira viatura abaixo para completar o perfil.",
+    "seatsCount": "{count, plural, one {# lugar} other {# lugares}}",
+    "plate": "Matrícula",
+    "plateHint": "Privada. Nunca é mostrada publicamente.",
+    "confirmRemove": "Remover esta viatura?",
+    "remove": "Remover",
+    "cancel": "Cancelar",
+    "added": "Viatura adicionada.",
+    "removed": "Viatura removida.",
+    "addTitle": "Adicionar uma viatura",
+    "addDescription": "Só a marca, o modelo, o ano e o tipo são públicos.",
+    "limitReached": "Atingiu o máximo de {max} viaturas.",
+    "make": "Marca",
+    "model": "Modelo",
+    "year": "Ano",
+    "seats": "Lugares para passageiros",
+    "type": "Tipo de viatura",
+    "add": "Adicionar viatura",
+    "adding": "A adicionar…"
+  },
+  "documents": {
+    "title": "Documentos",
+    "subtitleDriver": "Carregue os seus documentos para a nossa equipa o poder verificar.",
+    "subtitleFleet": "Carregue os documentos da empresa para a nossa equipa a poder verificar.",
+    "privacyTitle": "Os seus documentos são privados",
+    "privacyBody": "Só você e a nossa equipa de verificação os podem abrir. Nunca aparecem no perfil público e cada consulta por um administrador fica registada.",
+    "listTitle": "Documentos carregados",
+    "listDescription": "As atualizações de estado aparecem aqui e será notificado por email.",
+    "emptyTitle": "Ainda sem documentos",
+    "emptyDescription": "Carregue os seus documentos abaixo para iniciar a verificação.",
+    "number": "Número do documento",
+    "expires": "Data de validade",
+    "expiresOptional": "Opcional.",
+    "rejectedReason": "Motivo da rejeição",
+    "view": "Ver",
+    "delete": "Eliminar",
+    "confirmDelete": "Eliminar este documento?",
+    "confirmDeleteApproved": "Este documento está aprovado. Eliminá-lo remove o seu selo Verificado. Continuar?",
+    "cancel": "Cancelar",
+    "deleted": "Documento eliminado.",
+    "uploadTitle": "Carregar um documento",
+    "uploadDescription": "PDF, JPG ou PNG, até {size} MB.",
+    "allUploaded": "Já carregou todos os documentos necessários.",
+    "type": "Tipo de documento",
+    "file": "Ficheiro",
+    "fileHint": "PDF, JPG ou PNG.",
+    "upload": "Carregar documento",
+    "uploading": "A carregar…",
+    "uploaded": "Documento carregado. Vamos analisá-lo em breve.",
+    "types": {
+      "TVDE_DRIVER_CERTIFICATE": "Certificado de motorista TVDE",
+      "DRIVING_LICENCE": "Carta de condução",
+      "CRIMINAL_RECORD": "Certificado de registo criminal",
+      "TVDE_OPERATOR_LICENCE": "Licença de operador TVDE",
+      "NIF": "NIF (número fiscal)",
+      "INSURANCE": "Seguro"
+    },
+    "status": {
+      "PENDING": "Em análise",
+      "APPROVED": "Aprovado",
+      "REJECTED": "Rejeitado",
+      "EXPIRED": "Expirado",
+      "MISSING": "Não carregado"
+    }
+  },
+  "admin": {
+    "title": "Painel de administração",
+    "welcome": "Sessão iniciada como {email}.",
+    "comingSoon": "A fila de verificação, a gestão de utilizadores e a moderação de avaliações chegam no marco 5."
+  }
+}

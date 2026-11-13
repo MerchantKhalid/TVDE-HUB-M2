@@ -1,0 +1,587 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // pooled (Neon, "-pooler" host): runtime queries
+  directUrl = env("DIRECT_URL") // direct: migrations
+}
+
+// ───────────────────────── Enums ─────────────────────────
+
+enum Role {
+  DRIVER
+  FLEET
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum ServiceType {
+  TVDE_RIDES
+  TOURS_AND_TRANSFERS
+  AIRPORT_TRANSFERS
+  CORPORATE_EVENTS
+}
+
+enum VehicleType {
+  STANDARD
+  VAN_MPV
+  ELECTRIC
+  PREMIUM
+}
+
+enum AvailabilityStatus {
+  AVAILABLE
+  BUSY
+  OFFLINE
+}
+
+enum DocumentType {
+  TVDE_DRIVER_CERTIFICATE
+  DRIVING_LICENCE
+  CRIMINAL_RECORD
+  TVDE_OPERATOR_LICENCE
+  NIF
+  INSURANCE
+}
+
+enum DocumentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum ConnectionDirection {
+  APPLICATION // driver → fleet
+  INVITATION // fleet → driver
+}
+
+enum ConnectionStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  WITHDRAWN
+  EXPIRED
+}
+
+enum RequestKind {
+  DIRECT_DRIVER
+  FLEET
+  GENERAL
+}
+
+enum RequestStatus {
+  PENDING_VERIFICATION
+  OPEN
+  REPLIED
+  ACCEPTED
+  ASSIGNED
+  COMPLETED
+  CANCELLED
+  EXPIRED
+  REJECTED
+}
+
+enum TripType {
+  ONE_WAY
+  BY_THE_HOUR
+}
+
+enum AssignmentStatus {
+  ASSIGNED
+  COMPLETED
+  CANCELLED
+}
+
+enum ReviewStatus {
+  PUBLISHED
+  HIDDEN
+}
+
+enum ReviewAuthorType {
+  CUSTOMER
+  DRIVER
+  FLEET
+}
+
+enum ReviewTargetType {
+  DRIVER
+  FLEET
+}
+
+enum NotificationType {
+  CONNECTION_APPLICATION
+  CONNECTION_INVITATION
+  CONNECTION_RESPONSE
+  REQUEST_RECEIVED
+  REQUEST_REPLY
+  REQUEST_ASSIGNED
+  DOCUMENT_APPROVED
+  DOCUMENT_REJECTED
+  DOCUMENT_EXPIRING
+  DOCUMENT_EXPIRED
+  REVIEW_RECEIVED
+  SYSTEM
+}
+
+// ───────────────────── Auth.js + User ─────────────────────
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String     @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  role          Role       @default(DRIVER)
+  status        UserStatus @default(ACTIVE)
+  locale        String     @default("pt")
+  consentAt     DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  accounts          Account[]
+  sessions          Session[]
+  driverProfile     DriverProfile?
+  fleetProfile      FleetProfile?
+  notifications     Notification[]
+  uploadedDocuments Document[]     @relation("DocumentUploader")
+  reviewedDocuments Document[]     @relation("DocumentReviewer")
+  assignmentsMade   Assignment[]   @relation("AssignmentAssigner")
+  replies           RequestReply[] @relation("ReplyAuthor")
+  auditLogs         AuditLog[]
+
+  @@index([role, status])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ───────────────────── Reference data ─────────────────────
+
+model Language {
+  code   String @id // ISO 639-1, e.g. "pt"
+  nameEn String
+  namePt String
+  flag   String
+
+  drivers DriverLanguage[]
+  fleets  FleetLanguage[]
+}
+
+model Region {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  highlighted Boolean @default(false)
+  sortOrder   Int     @default(100)
+
+  cities City[]
+  drivers DriverProfile[] @relation("DriverAreas")
+  fleets  FleetProfile[]  @relation("FleetAreas")
+}
+
+model City {
+  id       String @id @default(cuid())
+  slug     String @unique
+  name     String
+  regionId String
+
+  region Region          @relation(fields: [regionId], references: [id], onDelete: Restrict)
+  drivers DriverProfile[] @relation("DriverCity")
+  fleets  FleetProfile[]  @relation("FleetCity")
+
+  @@index([regionId])
+}
+
+// ───────────────────── Profiles ─────────────────────
+
+model DriverProfile {
+  id              String             @id @default(cuid())
+  userId          String             @unique
+  slug            String             @unique
+  displayName     String
+  photoUrl        String?
+  bio             String?            @db.Text
+  phone           String? // private: masked until a connection is accepted
+  cityId          String?
+  yearsExperience Int                @default(0)
+  serviceTypes    ServiceType[]
+  availability    AvailabilityStatus @default(AVAILABLE)
+  isPublished     Boolean            @default(false)
+  verified        Boolean            @default(false)
+  ratingAvg       Float              @default(0)
+  ratingCount     Int                @default(0)
+  completeness    Int                @default(0)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  city         City?            @relation("DriverCity", fields: [cityId], references: [id], onDelete: SetNull)
+  serviceAreas Region[]         @relation("DriverAreas")
+  languages    DriverLanguage[]
+  vehicles     Vehicle[]
+  documents    Document[]
+  connections  Connection[]
+  reviews      Review[]         @relation("ReviewDriver")
+  assignments  Assignment[]
+  replies      RequestReply[]
+  requests     CustomerRequest[] @relation("RequestTargetDriver")
+
+  @@index([cityId])
+  @@index([ratingAvg])
+  @@index([createdAt])
+  @@index([yearsExperience])
+  @@index([isPublished, verified, availability])
+  @@index([serviceTypes], type: Gin)
+}
+
+model FleetProfile {
+  id                     String        @id @default(cuid())
+  userId                 String        @unique
+  slug                   String        @unique
+  companyName            String
+  logoUrl                String?
+  description            String?       @db.Text
+  website                String?
+  contactEmail           String? // private: masked until reply/connection
+  phone                  String? // private
+  nif                    String? // private
+  operatorLicenceNumber  String? // private
+  cityId                 String?
+  serviceTypes           ServiceType[]
+  termsOffered           String?       @db.Text
+  showDriversPublicly    Boolean       @default(true)
+  isPublished            Boolean       @default(false)
+  verified               Boolean       @default(false)
+  ratingAvg              Float         @default(0)
+  ratingCount            Int           @default(0)
+  completeness           Int           @default(0)
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  city         City?           @relation("FleetCity", fields: [cityId], references: [id], onDelete: SetNull)
+  serviceAreas Region[]        @relation("FleetAreas")
+  languages    FleetLanguage[]
+  vehicles     Vehicle[]
+  documents    Document[]
+  connections  Connection[]
+  reviews      Review[]        @relation("ReviewFleet")
+  assignments  Assignment[]
+  replies      RequestReply[]
+  requests     CustomerRequest[] @relation("RequestTargetFleet")
+
+  @@index([cityId])
+  @@index([ratingAvg])
+  @@index([createdAt])
+  @@index([isPublished, verified])
+  @@index([serviceTypes], type: Gin)
+}
+
+model DriverLanguage {
+  driverId     String
+  languageCode String
+
+  driver   DriverProfile @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  language Language      @relation(fields: [languageCode], references: [code], onDelete: Restrict)
+
+  @@id([driverId, languageCode])
+  @@index([languageCode])
+}
+
+model FleetLanguage {
+  fleetId      String
+  languageCode String
+
+  fleet    FleetProfile @relation(fields: [fleetId], references: [id], onDelete: Cascade)
+  language Language     @relation(fields: [languageCode], references: [code], onDelete: Restrict)
+
+  @@id([fleetId, languageCode])
+  @@index([languageCode])
+}
+
+model Vehicle {
+  id           String      @id @default(cuid())
+  driverId     String?
+  fleetId      String?
+  make         String
+  model        String
+  year         Int
+  type         VehicleType
+  seats        Int         @default(4)
+  licensePlate String? // private
+  photoUrl     String?
+  createdAt    DateTime    @default(now())
+
+  driver DriverProfile? @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  fleet  FleetProfile?  @relation(fields: [fleetId], references: [id], onDelete: Cascade)
+
+  @@index([driverId])
+  @@index([fleetId])
+  @@index([type])
+}
+
+// ───────────────────── Documents ─────────────────────
+
+model Document {
+  id              String         @id @default(cuid())
+  type            DocumentType
+  status          DocumentStatus @default(PENDING)
+  number          String?
+  expiresAt       DateTime?
+  fileKey         String // private blob key / URL: never exposed publicly
+  fileName        String
+  mimeType        String
+  sizeBytes       Int
+  rejectionReason String?
+  expiryNotifiedAt DateTime?
+  uploadedById    String
+  driverId        String?
+  fleetId         String?
+  reviewedById    String?
+  reviewedAt      DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  uploadedBy User           @relation("DocumentUploader", fields: [uploadedById], references: [id], onDelete: Cascade)
+  reviewedBy User?          @relation("DocumentReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  driver     DriverProfile? @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  fleet      FleetProfile?  @relation(fields: [fleetId], references: [id], onDelete: Cascade)
+
+  @@index([status, createdAt])
+  @@index([expiresAt, status])
+  @@index([driverId])
+  @@index([fleetId])
+}
+
+// ───────────────────── Driver ↔ Fleet ─────────────────────
+
+model Connection {
+  id          String              @id @default(cuid())
+  driverId    String
+  fleetId     String
+  direction   ConnectionDirection
+  status      ConnectionStatus    @default(PENDING)
+  message     String?             @db.Text
+  showPublicly Boolean            @default(true)
+  // "driverId:fleetId" while PENDING/ACCEPTED, NULL otherwise.
+  // The unique constraint prevents duplicate active applications/invitations.
+  activeKey   String?             @unique
+  respondedAt DateTime?
+  expiresAt   DateTime?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+
+  driver  DriverProfile @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  fleet   FleetProfile  @relation(fields: [fleetId], references: [id], onDelete: Cascade)
+  reviews Review[]
+
+  @@index([fleetId, status])
+  @@index([driverId, status])
+  @@index([expiresAt, status])
+}
+
+// ───────────────────── Customer requests ─────────────────────
+
+model CustomerRequest {
+  id                String        @id @default(cuid())
+  kind              RequestKind
+  status            RequestStatus @default(PENDING_VERIFICATION)
+  // Only SHA-256 hashes are stored; raw tokens only travel in emailed links.
+  verifyTokenHash   String?       @unique
+  trackingTokenHash String        @unique
+  emailVerifiedAt   DateTime?
+
+  customerName  String
+  customerEmail String
+  customerPhone String
+  locale        String   @default("pt")
+
+  pickupAt       DateTime
+  pickupLocation String
+  destination    String?
+  tripType       TripType
+  hours          Int?
+  passengers     Int      @default(1)
+  luggage        Int      @default(0)
+  languageCode   String?
+  vehicleType    VehicleType
+  serviceType    ServiceType
+  notes          String?  @db.Text
+
+  targetDriverId String?
+  targetFleetId  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  targetDriver DriverProfile? @relation("RequestTargetDriver", fields: [targetDriverId], references: [id], onDelete: SetNull)
+  targetFleet  FleetProfile?  @relation("RequestTargetFleet", fields: [targetFleetId], references: [id], onDelete: SetNull)
+  replies      RequestReply[]
+  assignment   Assignment?
+  reviews      Review[]
+
+  @@index([status, createdAt])
+  @@index([targetDriverId, status])
+  @@index([targetFleetId, status])
+  @@index([pickupAt])
+  @@index([customerEmail])
+}
+
+model RequestReply {
+  id           String   @id @default(cuid())
+  requestId    String
+  authorUserId String
+  fleetId      String?
+  driverId     String?
+  message      String   @db.Text
+  quoteCents   Int?
+  currency     String   @default("EUR")
+  createdAt    DateTime @default(now())
+
+  request CustomerRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  author  User            @relation("ReplyAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
+  fleet   FleetProfile?   @relation(fields: [fleetId], references: [id], onDelete: SetNull)
+  driver  DriverProfile?  @relation(fields: [driverId], references: [id], onDelete: SetNull)
+
+  @@index([requestId, createdAt])
+}
+
+model Assignment {
+  id           String           @id @default(cuid())
+  requestId    String           @unique
+  driverId     String
+  fleetId      String?
+  assignedById String
+  status       AssignmentStatus @default(ASSIGNED)
+  completedAt  DateTime?
+  createdAt    DateTime         @default(now())
+
+  request    CustomerRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  driver     DriverProfile   @relation(fields: [driverId], references: [id], onDelete: Cascade)
+  fleet      FleetProfile?   @relation(fields: [fleetId], references: [id], onDelete: SetNull)
+  assignedBy User            @relation("AssignmentAssigner", fields: [assignedById], references: [id], onDelete: Cascade)
+
+  @@index([driverId, status])
+  @@index([fleetId, status])
+}
+
+// ───────────────────── Reviews ─────────────────────
+
+model Review {
+  id           String           @id @default(cuid())
+  status       ReviewStatus     @default(PUBLISHED)
+  rating       Int // 1..5 (validated with Zod + DB check in migration, see README)
+  comment      String?          @db.Text
+  authorType   ReviewAuthorType
+  authorName   String
+  authorUserId String?
+  targetType   ReviewTargetType
+  driverId     String?
+  fleetId      String?
+  connectionId String?
+  requestId    String?
+  createdAt    DateTime         @default(now())
+
+  driver     DriverProfile?   @relation("ReviewDriver", fields: [driverId], references: [id], onDelete: Cascade)
+  fleet      FleetProfile?    @relation("ReviewFleet", fields: [fleetId], references: [id], onDelete: Cascade)
+  connection Connection?      @relation(fields: [connectionId], references: [id], onDelete: SetNull)
+  request    CustomerRequest? @relation(fields: [requestId], references: [id], onDelete: SetNull)
+
+  // One review per interaction
+  @@unique([connectionId, authorType])
+  @@unique([requestId, targetType])
+  @@index([driverId, status])
+  @@index([fleetId, status])
+  @@index([createdAt])
+}
+
+// ───────────────────── Platform ─────────────────────
+
+model Notification {
+  id       String           @id @default(cuid())
+  userId   String
+  type     NotificationType
+  titleKey String // i18n key; rendered in the reader's locale
+  bodyKey  String?
+  params   Json?
+  href     String?
+  readAt   DateTime?
+  createdAt DateTime        @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt, createdAt])
+}
+
+// Single row (id = "singleton"). Admin-editable feature flags.
+model SiteSettings {
+  id                         String        @id @default("singleton")
+  // Service types customers are allowed to book directly. Legal check required with IMT / lawyer.
+  customerBookableServices   ServiceType[]
+  directDriverBookingEnabled Boolean       @default(true)
+  fleetRequestsEnabled       Boolean       @default(true)
+  generalRequestsEnabled     Boolean       @default(true)
+  updatedAt                  DateTime      @updatedAt
+  updatedById                String?
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  action     String // e.g. "document.view", "document.approve", "user.suspend"
+  entityType String
+  entityId   String?
+  metadata   Json?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId, createdAt])
+  @@index([entityType, entityId])
+  @@index([action, createdAt])
+}

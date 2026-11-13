@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Colours are RGB channels so Tailwind opacity modifiers (bg-primary/10) work. */
+  :root {
+    --background: 250 248 245; /* warm off-white #FAF8F5 */
+    --foreground: 30 41 59; /* slate-800 */
+    --card: 255 255 255;
+    --muted: 242 238 232;
+    --muted-foreground: 71 85 105; /* slate-600, AA on background */
+    --border: 228 223 214;
+    --ring: 11 110 79;
+
+    --primary: 11 110 79; /* deep green #0B6E4F */
+    --primary-foreground: 255 255 255;
+    --accent: 215 38 61; /* warm red #D7263D */
+    --accent-foreground: 255 255 255;
+    --gold: 242 183 5; /* #F2B705 */
+    --gold-foreground: 30 41 59;
+  }
+
+  .dark {
+    --background: 14 22 19;
+    --foreground: 241 245 249;
+    --card: 21 32 28;
+    --muted: 30 43 37;
+    --muted-foreground: 168 181 175;
+    --border: 44 60 53;
+    --ring: 52 190 140;
+
+    --primary: 52 190 140;
+    --primary-foreground: 6 30 22;
+    --accent: 244 96 115;
+    --accent-foreground: 40 6 10;
+    --gold: 242 183 5;
+    --gold-foreground: 30 41 59;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
